@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10131c" />
+  <meta
+    name="description"
+    content="NovaCalc is a modern scientific calculator with trigonometry, logarithms, powers, roots, calculation history, and DEG/RAD modes."
+  />
+  <title>NovaCalc — Scientific Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="NovaCalc home">
+        <span class="brand-icon">N</span>
+        <span class="brand-name">Nova<span>Calc</span></span>
+      </a>
+
+      <div class="topbar-actions">
+        <button
+          id="themeToggle"
+          class="icon-button"
+          type="button"
+          aria-label="Switch theme"
+          title="Switch theme"
+        >☼</button>
+        <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="intro">
+        <div class="eyebrow"><span class="status-dot"></span> PRECISION CALCULATOR</div>
+        <h1>Calculate beyond<br /><span>the ordinary.</span></h1>
+        <p>
+          A clean, powerful scientific calculator for everyday math,
+          advanced functions, and everything in between.
+        </p>
+      </section>
+
+      <section class="calculator-layout" aria-label="Scientific calculator">
+        <div class="calculator-card">
+          <div class="calculator-heading">
+            <div>
+              <div class="calculator-title">Scientific Calculator</div>
+              <div class="calculator-subtitle">NovaCalc / Advanced mode</div>
+            </div>
+            <span class="live-badge"><span></span> READY</span>
+          </div>
+
+          <div class="display-panel">
+            <div class="display-topline">
+              <span id="angleLabel">DEG</span>
+              <span id="memoryLabel"></span>
+            </div>
+            <div
+              id="expression"
+              class="expression"
+              aria-label="Current expression"
+              title="Current expression"
+            ></div>
+            <div
+              id="result"
+              class="result"
+              aria-live="polite"
+              aria-label="Calculator result"
+            >0</div>
+            <div id="errorMessage" class="error-message" role="status"></div>
+          </div>
+
+          <div class="mode-bar">
+            <button id="angleToggle" class="angle-button" type="button">DEG</button>
+            <div class="mode-note">Angle mode</div>
+            <button id="clearHistory" class="text-button" type="button">Clear history</button>
+          </div>
+
+          <div class="scientific-keypad" id="keypad">
+            <!-- Scientific functions -->
+            <button class="key key-function" data-func="sin" type="button">sin</button>
+            <button class="key key-function" data-func="cos" type="button">cos</button>
+            <button class="key key-function" data-func="tan" type="button">tan</button>
+            <button class="key key-function" data-func="log" type="button">log</button>
+            <button class="key key-function" data-func="ln" type="button">ln</button>
+
+            <button class="key key-function" data-func="asin" type="button">sin⁻¹</button>
+            <button class="key key-function" data-func="acos" type="button">cos⁻¹</button>
+            <button class="key key-function" data-func="atan" type="button">tan⁻¹</button>
+            <button class="key key-function" data-action="square" type="button">x²</button>
+            <button class="key key-function" data-action="power" type="button">xʸ</button>
+
+            <button class="key key-function" data-action="sqrt" type="button">√x</button>
+            <button class="key key-function" data-action="cbrt" type="button">∛x</button>
+            <button class="key key-function" data-action="factorial" type="button">x!</button>
+            <button class="key key-function" data-action="inverse" type="button">1/x</button>
+            <button class="key key-function" data-action="abs" type="button">|x|</button>
+
+            <button class="key key-function" data-value="(" type="button">(</button>
+            <button class="key key-function" data-value=")" type="button">)</button>
+            <button class="key key-function" data-value="pi" type="button">π</button>
+            <button class="key key-function" data-value="e" type="button">e</button>
+            <button class="key key-function" data-action="percent" type="button">%</button>
+
+            <!-- Editing and arithmetic -->
+            <button class="key key-danger" data-action="clear" type="button">AC</button>
+            <button class="key key-danger" data-action="delete" type="button">DEL</button>
+            <button class="key key-operator" data-operator="/" type="button">÷</button>
+            <button class="key key-operator" data-operator="*" type="button">×</button>
+            <button class="key key-operator" data-operator="-" type="button">−</button>
+
+            <button class="key" data-number="7" type="button">7</button>
+            <button class="key" data-number="8" type="button">8</button>
+            <button class="key" data-number="9" type="button">9</button>
+            <button class="key key-operator" data-operator="+" type="button">+</button>
+            <button class="key key-operator" data-action="sign" type="button">+/−</button>
+
+            <button class="key" data-number="4" type="button">4</button>
+            <button class="key" data-number="5" type="button">5</button>
+            <button class="key" data-number="6" type="button">6</button>
+            <button class="key" data-action="decimal" type="button">.</button>
+            <button class="key key-operator" data-action="answer" type="button">Ans</button>
+
+            <button class="key" data-number="1" type="button">1</button>
+            <button class="key" data-number="2" type="button">2</button>
+            <button class="key" data-number="3" type="button">3</button>
+            <button class="key key-zero" data-number="0" type="button">0</button>
+            <button class="key key-equals" data-action="equals" type="button">=</button>
+          </div>
+
+          <div class="keyboard-hint">
+            <span>⌨ Keyboard supported</span>
+            <span>Enter = calculate · Esc = clear</span>
+          </div>
+        </div>
+
+        <aside class="history-card">
+          <div class="history-heading">
+            <div>
+              <div class="history-title">Recent calculations</div>
+              <div class="history-subtitle">Your latest results</div>
+            </div>
+            <span class="history-icon">↺</span>
+          </div>
+
+          <div id="historyList" class="history-list">
+            <div class="history-empty">
+              <span class="history-empty-icon">∑</span>
+              <p>No calculations yet</p>
+              <span>Your results will appear here.</span>
+            </div>
+          </div>
+
+          <div class="history-footer">
+            <span>History is stored in this session.</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="features" aria-label="Calculator features">
+        <article class="feature-card">
+          <span class="feature-icon">ƒ</span>
+          <h2>Scientific functions</h2>
+          <p>Trigonometry, logarithms, powers, roots, factorials, and more.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">◷</span>
+          <h2>Calculation history</h2>
+          <p>Review previous calculations and bring a result back into the display.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">◐</span>
+          <h2>Your preferred theme</h2>
+          <p>Switch between dark and light appearances whenever you like.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-brand">Nova<span>Calc</span></div>
+      <p>Designed for clear thinking and precise calculations.</p>
+      <p> <b> Designed By Sami Ul Hassan Uog Student</b></p>
+      <div class="footer-bottom">© <span id="year"></span> NovaCalc. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
